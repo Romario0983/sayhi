@@ -88,10 +88,10 @@ Qt3DCore::QEntity *createScene()
     ObjFileEntity->addComponent(material); */
 
     //SceneLoader
-    Qt3DCore::QEntity *sceneEntity = new Qt3DCore::QEntity(rootEntity);
+    //Qt3DCore::QEntity *sceneEntity = new Qt3DCore::QEntity(rootEntity);
     Qt3DRender::QSceneLoader *sceneFile = new Qt3DRender::QSceneLoader();
     sceneFile->setSource(QUrl("file:///C:/Qt/git/k.stl"));
-    sceneEntity->addComponent(sceneFile);
+    rootEntity->addComponent(sceneFile);
     //sceneEntity->addComponent(material);
 
     return rootEntity;

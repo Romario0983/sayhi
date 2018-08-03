@@ -25,11 +25,13 @@ CONFIG += c++11
 SOURCES += \
         main.cpp \
     main3dwindow.cpp \
-    metroelement.cpp
+    metroelement.cpp \
+    filemodel.cpp
 
 HEADERS += \
     main3dwindow.h \
-    metroelement.h
+    metroelement.h \
+    filemodel.h
 
 FORMS += \
         main_3d_window.ui

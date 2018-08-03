@@ -1,8 +1,9 @@
 #include "metroelement.h"
 
-MetroElement::MetroElement(QObject *parent) : QObject(parent)
+MetroElement::MetroElement(RPoint point, const QString &name, Qt3DCore::QEntity *rootEntity, QObject *parent) :
+    QObject(parent), _x(point.x), _y(point.y), _z(point.z), _name(name)
 {
-
+    drawEntity(rootEntity);
 }
 
 //****************************************XYZ Properties *********************************************
@@ -52,7 +53,7 @@ QString  MetroElement::name() const
     return _name;
 }
 
-void MetroElement::setname(QString new_name)
+void MetroElement::setname(QString &new_name)
 {
         _name = new_name;
         emit nameChanged();

@@ -2,6 +2,14 @@
 #define METROELEMENT_H
 
 #include <QObject>
+#include <Qt3DCore/QEntity>
+
+struct RPoint
+{
+    double x;
+    double y;
+    double z;
+};
 
 class MetroElement : public QObject
 {
@@ -13,7 +21,7 @@ class MetroElement : public QObject
     Q_PROPERTY(QString name READ name WRITE name NOTIFY nameChanged)
 
 public:
-    explicit MetroElement(QObject *parent = nullptr);
+    explicit MetroElement(RPoint point, const QString &name, Qt3DCore::QEntity *rootEntity, QObject *parent = nullptr);
 
 public:
     //XYZ
@@ -26,12 +34,16 @@ public:
 
     //NAME
     QString name() const;
-    void setname(QString new_name);
+    void setname(QString &new_name);
 
 private:
     //Private properties
     double _x, _y, _z;
     QString _name;
+
+private:
+    virtual Qt3DCore::QEntity* drawEntity(Qt3DCore::QEntity *rootEntity);
+    Qt3DCore::QEntity *sceneEntity;
 
 
 signals:
