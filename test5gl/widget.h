@@ -1,22 +1,18 @@
-#ifndef WIDGET_H
-#define WIDGET_H
+#include <QGLWidget>
 
-#include <QWidget>
-
-namespace Ui {
-class Widget;
-}
-
-class Widget : public QWidget
+class Widget : public QGLWidget
 {
-    Q_OBJECT
 
-public:
-    explicit Widget(QWidget *parent = nullptr);
-    ~Widget();
 
-private:
-    Ui::Widget *ui;
+
+  protected:
+     void initializeGL();
+     void resizeGL(int w, int h);
+     void paintGL();
+
+  public:
+     Widget(QWidget* parent = 0);
+
 };
 
-#endif // WIDGET_H
+

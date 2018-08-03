@@ -1,14 +1,21 @@
 #include "widget.h"
-#include "ui_widget.h"
+#include <GL/gl.h>
 
-Widget::Widget(QWidget *parent) :
-    QWidget(parent),
-    ui(new Ui::Widget)
+Widget::Widget(QWidget* parent) : QGLWidget(parent)
 {
-    ui->setupUi(this);
+}
+void Widget::initializeGL()
+{
+     qglClearColor(Qt::green);
 }
 
-Widget::~Widget()
+void Widget::resizeGL(int w, int h)
 {
-    delete ui;
+}
+
+void Widget::paintGL()
+{
+    glClearColor(1.0, 1.0, 1.0, 1.0);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
 }

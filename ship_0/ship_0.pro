@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui widgets
+QT       += 3dcore 3drender 3dinput 3dextras gui widgets
 
 TARGET = ship_0
 TEMPLATE = app
@@ -24,10 +24,12 @@ CONFIG += c++11
 
 SOURCES += \
         main.cpp \
-        main_3d_window.cpp
+    main3dwindow.cpp \
+    metroelement.cpp
 
 HEADERS += \
-        main_3d_window.h
+    main3dwindow.h \
+    metroelement.h
 
 FORMS += \
         main_3d_window.ui

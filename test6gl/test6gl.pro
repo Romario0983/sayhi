@@ -24,10 +24,12 @@ CONFIG += c++11
 
 SOURCES += \
         main.cpp \
-        scene.cpp
+        scene.cpp \
+    mainscene.cpp
 
 HEADERS += \
-        scene.h
+        scene.h \
+    mainscene.h
 
 FORMS += \
         scene.ui

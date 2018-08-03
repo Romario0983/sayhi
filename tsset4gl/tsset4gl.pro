@@ -4,8 +4,8 @@
 #
 #-------------------------------------------------
 
-QT       += core gui widgets
-
+QT       += core gui widgets opengl
+QT += opengl
 TARGET = tsset4gl
 TEMPLATE = app
 

@@ -1,11 +1,15 @@
-#include "main_3d_window.h"
-#include <QApplication>
+#include <QGuiApplication>
+
+#include "main3dwindow.h"
+
 
 int main(int argc, char *argv[])
 {
-    QApplication a(argc, argv);
-    main_3d_window w;
-    w.show();
+    QGuiApplication a(argc, argv);
+
+    Main3DWindow view;;
+
+    view.show();
 
     return a.exec();
 }

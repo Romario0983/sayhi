@@ -1,22 +1,46 @@
-#ifndef ORBITA_H
-#define ORBITA_H
+#ifndef ORBITTRANSFORMCONTROLLER_H
+#define ORBITTRANSFORMCONTROLLER_H
 
-#include <QWidget>
+#include <QObject>
+#include <QMatrix4x4>
 
-namespace Ui {
-class Orbita;
+namespace Qt3DCore {
+class QTransform;
 }
 
-class Orbita : public QWidget
+class Orbita : public QObject
 {
     Q_OBJECT
+    Q_PROPERTY(Qt3DCore::QTransform* target READ target WRITE setTarget NOTIFY targetChanged)
+    Q_PROPERTY(float radius READ radius WRITE setRadius NOTIFY radiusChanged)
+    Q_PROPERTY(float angle READ angle WRITE setAngle NOTIFY angleChanged)
 
 public:
-    explicit Orbita(QWidget *parent = nullptr);
-    ~Orbita();
+    Orbita(QObject *parent = 0);
+
+    void setTarget(Qt3DCore::QTransform *target);
+    Qt3DCore::QTransform *target() const;
+
+    void setRadius(float radius);
+    float radius() const;
+
+    void setAngle(float angle);
+    float angle() const;
+
+signals:
+    void targetChanged();
+    void radiusChanged();
+    void angleChanged();
+
+protected:
+    void updateMatrix();
 
 private:
-    Ui::Orbita *ui;
+    Qt3DCore::QTransform *m_target;
+    QMatrix4x4 m_matrix;
+    float m_radius;
+    float m_angle;
 };
 
-#endif // ORBITA_H
+
+#endif // ORBITTRANSFORMCONTROLLER_H
