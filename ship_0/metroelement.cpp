@@ -1,10 +1,16 @@
 #include "metroelement.h"
 
-MetroElement::MetroElement(RPoint point, const QString &name, Qt3DCore::QEntity *rootEntity, QObject *parent) :
+MetroElement::MetroElement(RPoint point, const QString name, Qt3DCore::QEntity *rootEntity, QObject *parent) :
     QObject(parent), _x(point.x), _y(point.y), _z(point.z), _name(name)
 {
-    drawEntity(rootEntity);
+     myEntity = new Qt3DCore::QEntity(rootEntity); ///?????ЧТо делать в деструкторе?
 }
+
+MetroElement::~MetroElement()
+{
+    ///?????ЧТо делать в деструкторе? myEntity
+}
+
 
 //****************************************XYZ Properties *********************************************
 double  MetroElement::x() const
@@ -48,13 +54,16 @@ void MetroElement::setz(double new_z)
 
 //*****************************************NAME Properties **********************************
 
-QString  MetroElement::name() const
+QString MetroElement::name() const
 {
     return _name;
 }
 
-void MetroElement::setname(QString &new_name)
+void MetroElement::setname(const QString &new_name)
 {
         _name = new_name;
         emit nameChanged();
 }
+
+//*****************************************Methods***********************************************
+

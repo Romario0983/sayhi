@@ -18,10 +18,11 @@ class MetroElement : public QObject
     Q_PROPERTY(double x READ x WRITE setx NOTIFY xChanged)
     Q_PROPERTY(double y READ y WRITE sety NOTIFY yChanged)
     Q_PROPERTY(double z READ z WRITE setz NOTIFY zChanged)
-    Q_PROPERTY(QString name READ name WRITE name NOTIFY nameChanged)
+    Q_PROPERTY(QString name READ name WRITE setname NOTIFY nameChanged)
 
 public:
-    explicit MetroElement(RPoint point, const QString &name, Qt3DCore::QEntity *rootEntity, QObject *parent = nullptr);
+    explicit MetroElement(RPoint point, const QString name, Qt3DCore::QEntity *rootEntity, QObject *parent = nullptr);
+    ~MetroElement();
 
 public:
     //XYZ
@@ -33,17 +34,17 @@ public:
     void setz(double new_z);
 
     //NAME
-    QString name() const;
-    void setname(QString &new_name);
+    QString name() const ;
+    void setname(const QString &new_name);
 
 private:
     //Private properties
     double _x, _y, _z;
     QString _name;
 
-private:
-    virtual Qt3DCore::QEntity* drawEntity(Qt3DCore::QEntity *rootEntity);
-    Qt3DCore::QEntity *sceneEntity;
+protected:
+
+    Qt3DCore::QEntity *myEntity;
 
 
 signals:
@@ -57,5 +58,8 @@ public slots:
 
 
 };
+
+
+
 
 #endif // METROELEMENT_H

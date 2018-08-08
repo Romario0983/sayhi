@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += 3dcore 3drender 3dinput 3dextras gui widgets
+QT       += 3dcore 3drender 3dinput 3dextras gui widgets core
 
 TARGET = ship_0
 TEMPLATE = app
