@@ -9,6 +9,7 @@
 #include <Qt3DExtras/QForwardRenderer>
 
 
+
 int main(int argc, char *argv[])
 {
     QGuiApplication a(argc, argv);
@@ -29,6 +30,9 @@ int main(int argc, char *argv[])
     camController->setLookSpeed( 180.0f );
     camController->setCamera(camera);
 
+    QObject::connect(camera, SIGNAL (viewVectorChanged(const QVector3D)), &view, SLOT(logCameraVector(const QVector3D)));
+    QObject::connect(camera, SIGNAL (projectionMatrixChanged(const QMatrix4x4)), &view, SLOT(logCameraMatrix(const QMatrix4x4)));
+    QObject::connect(camera, SIGNAL (positionChanged(const QVector3D)), &view, SLOT(positionChanged(const QVector3D)));
     //Run
     view.setRootEntity(rootScene);
     view.resize(900,900);
@@ -36,4 +40,25 @@ int main(int argc, char *argv[])
     FileModel F( RPoint{0,0,0}, "Test", QUrl("file:///C:/Qt/git/s.obj"), rootScene);
     view.show();
     return a.exec();
+}
+
+void Main3DWindow::logCameraVector(const QVector3D &vector)
+{
+    qDebug()<< "viewVectorChanged";
+    qDebug()<< vector;
+
+}
+
+
+void Main3DWindow::logCameraMatrix(const QMatrix4x4 &projectionMatrix)
+{
+    qDebug()<< "projectionMatrixChanged";
+    qDebug()<< projectionMatrix;
+}
+
+void Main3DWindow::positionChanged(const QVector3D &position)
+
+{
+    qDebug()<< "positionChanged";
+    qDebug()<< position;
 }

@@ -33,11 +33,6 @@ FileModel::FileModel(RPoint point, const QString name, const QUrl &filename, Qt3
     sceneFile = new Qt3DRender::QSceneLoader();
     sceneFile->setSource(filename);
 
-    //Material
-    //material = new Qt3DExtras::QPhongMaterial();
-    //material->setDiffuse(QColor(Qt::red));;
-
-    //myEntity->addComponent(material);
     myEntity->addComponent(sceneFile);
 
     QObject::connect(sceneFile, &Qt3DRender::QSceneLoader::statusChanged, this, &FileModel::onStatusChanged);
