@@ -7,7 +7,7 @@
 #include <Qt3DRender/QCameraLens>
 #include <Qt3DExtras/QOrbitCameraController>
 #include <Qt3DExtras/QForwardRenderer>
-
+#include <gsl/gsl_sf.h>
 
 
 int main(int argc, char *argv[])
